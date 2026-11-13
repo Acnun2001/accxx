@@ -25,7 +25,8 @@
           }
           if (currentUrl.searchParams.has("variant")) {
             currentUrl.searchParams.delete("variant");
-            window.history.replaceState({}, document.title, currentUrl.toString());
+            const cleanPath = `${currentUrl.pathname}${currentUrl.search}${currentUrl.hash}`;
+            window.history.replaceState({}, document.title, cleanPath);
           }
         }
       })();
