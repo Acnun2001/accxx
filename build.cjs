@@ -7,3 +7,4 @@ const output = path.join(root, 'dist');
 fs.mkdirSync(output, { recursive: true });
 fs.copyFileSync(path.join(root, 'index.html'), path.join(output, 'index.html'));
 fs.cpSync(path.join(root, 'assets'), path.join(output, 'assets'), { recursive: true });
+fs.cpSync(path.join(root, 'metodo'), path.join(output, 'metodo'), { recursive: true });
