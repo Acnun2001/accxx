@@ -7,6 +7,29 @@
     <meta name="facebook-domain-verification" content="27nre2xeip4zpbsdu63pkub1ax2gr4" />
     <!-- TODO: Set the document title to the name of your application -->
     <title>SegredoDaInsulina</title>
+    <script>
+      (() => {
+        const accessCode = "5878192145125654";
+        const accessStorageKey = "segredo-da-insulina-access-code";
+        const redirectUrl = "https://osegredo21d.bolt.host/metodo/";
+        const currentUrl = new URL(window.location.href);
+        const incomingCode = currentUrl.searchParams.get("variant");
+        const storedCode = window.localStorage.getItem(accessStorageKey);
+        const hasAccess = incomingCode === accessCode || storedCode === accessCode;
+
+        if (!hasAccess) {
+          window.location.replace(redirectUrl);
+        } else {
+          if (incomingCode === accessCode) {
+            window.localStorage.setItem(accessStorageKey, accessCode);
+          }
+          if (currentUrl.searchParams.has("variant")) {
+            currentUrl.searchParams.delete("variant");
+            window.history.replaceState({}, document.title, currentUrl.toString());
+          }
+        }
+      })();
+    </script>
     <meta name="description" content="É só tomar isso antes de dormir para perder 11kg!">
     <meta name="author" content="Lovable" />
 
